@@ -5,7 +5,7 @@ export const signup = async (req, res) => {
     try {
         const { username, fullName, password, confirmPassword, gender } = req.body;
         if (!fullName || !username || !password || !confirmPassword || !gender) {
-            return res.status(400).json({ error: "please fill all the fields" });
+            return res.status(400).json({ error: "Please fill all the fields" });
         }
         if (password !== confirmPassword) {
             return res.status(400).json({ error: "Passwords don't match" });
@@ -97,7 +97,7 @@ export const getMe = async (req, res) => {
     try {
         const user = await prisma.user.findUnique({ where: { id: req.user.id } });
         if (!user) {
-            return res.status(404).json({ error: "User nto found" });
+            return res.status(404).json({ error: "User not found" });
         }
         res.status(200).json({
             id: user.id,
